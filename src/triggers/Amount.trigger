@@ -16,6 +16,10 @@ trigger Amount on Opportunity (After insert)
  a.ID=s;
  a.Totalamount__c=i;
  update a;
+ Account a=new Account();
+ a.ID=s;
+ a.Totalamount__c=i;
+ update a;
  
 
 }
