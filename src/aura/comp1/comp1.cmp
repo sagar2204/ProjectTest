@@ -1,0 +1,6 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes" access="global" >
+    <div>
+        Component 1   
+    </div>     
+    <lightning:button variant="brand" label="Navigate to Component 2" onclick="{!c.navigate}" /> 
+</aura:component>

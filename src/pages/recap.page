@@ -1,0 +1,8 @@
+<apex:page showheader="false" standardstylesheets="true">
+
+	<apex:composition template="{!$Site.template}">
+		<apex:define name="content">
+			<c:reCAPTCHA /> 
+		</apex:define>
+	</apex:composition>  
+</apex:page>

@@ -1,0 +1,33 @@
+<apex:page controller="ccontroller">
+    <apex:form > 
+        
+        <apex:pageBlock title="All Contacts"  id="details">
+            <apex:inputText value="{!searchstring}" label="Input"/>   
+            <apex:commandButton value="Search records" action="{!search}"/>  
+            <apex:commandButton value="Clear records" action="{!clear}"/>  
+            
+            <apex:pageBlockTable value="{!listWrappAtt}" var="con" id="test">  
+                <apex:column >
+                    <apex:inputCheckbox value="{!con.selected}"/>
+                </apex:column>
+                <apex:column headerValue="Action">
+                    <apex:outputLink value="/{!con.att.id}/e?retURL=/apex/{!$CurrentPage.Name}?id={!con.att.AccountId}" >Edit </apex:outputLink> &nbsp;| &nbsp;
+                    <apex:commandLink action="{!Deletec}" reRender="test" value="Delete">
+                        <apex:param name="contactid" value="{!con.att.id}" assignTo="{!getid}"/> 
+                    </apex:commandLink>                                                 
+                </apex:column> 
+                <apex:column value="{!con.att.account.Name}"/> 
+                <apex:column value="{!con.att.ID}"/>  
+                <apex:column value="{!con.att.Name}"/> 
+                <apex:column value="{!con.att.Email}"/> 
+            </apex:pageBlockTable>
+            
+            <apex:pageBlockButtons >
+                <apex:commandButton value="FirstPage" rerender="details" action="{!FirstPage}" disabled="{!prev}"/>
+                <apex:commandButton value="Previous" rerender="details" action="{!previous}" disabled="{!prev}"/>
+                <apex:commandButton value="Next" rerender="details" action="{!next}" disabled="{!nxt}"/>
+                <apex:commandButton value="LastPage" rerender="details" action="{!LastPage}" disabled="{!nxt}"/>
+            </apex:pageBlockButtons>
+        </apex:pageBlock>         
+    </apex:form>
+</apex:page>

@@ -1,0 +1,18 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	<div class="slds-grid slds-size_12-of-12 main"> 
+      
+        <div class="slds-grid slds-size_1-of-3 leftlist">
+            <p>Copyrights @2020 Turnitin LLC,All Rights Reserved</p>
+        </div>
+        <div class="slds-grid slds-size_2-of-3 rightlist">
+            <ul class="footer">  
+                <li>Turnitin.com</li>
+                <li>Release Notes</li>
+                <li>Known Issue</li>
+                <li>Privacy and Security</li> 
+                <li>System status</li> 
+            </ul>
+        </div>
+        
+    </div>
+</aura:component>

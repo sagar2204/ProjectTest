@@ -1,0 +1,51 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:appHostable" access="global" controller="Casecontroller" >
+    <aura:attribute name="data" type="List"/> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <div class="slds-grid header ">
+        <div class="Logo slds-size_1-of-3"> 
+            <img src="{!$Resource.Turnitin}"/>
+        </div> 
+        <div class="headerRight slds-size_2-of-3">
+            <ul>
+                <li  class="home"> Home<span></span></li>
+                <li onclick="{!c.navigate}" label="Case"> Case</li>
+                <li onclick="{!c.navigatetoknowledge}">Konwledge Article</li>
+                <li onclick="{!c.navigatetodashboard}"> Dashboard</li>
+                <button class="slds-button slds-button_brand status" size="small">System Status</button>  
+                <li><lightning:icon iconName="standard:user" alternativeText="user" /></li>
+                <li> Log out</li>
+            </ul>
+            
+        </div>
+    </div>
+    
+    <div class="search"> 
+        <div class="slds grid slds-size_12-of-12 ">
+            <H1 class="Welcome">Welcome To Turnitin Support Center</H1>  
+            <h2 class="knowledge">Search Below For Knowledge Article's and User Guide</h2>  
+        </div>  
+        
+        <div class="slds-grid  slds-size_1-of-1 searchbar"> 
+            <div class="slds-form-element">
+                <div class="slds-form-element__control icon">
+                    <input type="text" id="text-input-id-1" placeholder="Search Topics Questions Keywords" class="slds-input" />
+                    <lightning:icon iconName="utility:search" alternativeText="XML" class="searchicon"/> 
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="slds-grid slds-size_12-of-12 spotmessage">
+        <aura:iteration items="{!v.data}" var="c">
+            <div class="slds-grid slds-size_10-of-12 content">
+                <p>{!c.Message__c}</p> 
+            </div>
+        </aura:iteration>
+    </div>  
+    <div class="slds-grid slds-wrap Request">
+        <h1> Can't Find What you Are Looking for?</h1>
+        <lightning:button variant="brand" label="Raise a Case" title="Brand action" onclick="{! c.navigatetocase}" class="RaiseCase"/> 
+    </div> 
+    
+    
+    
+</aura:component>

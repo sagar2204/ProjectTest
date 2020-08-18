@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Review</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Reviews</value>
+    </caseValues>
+    <fields>
+        <label><!-- Core Competencies Comments --></label>
+        <name>Core_Competencies_Comments__c</name>
+    </fields>
+    <fields>
+        <help><!-- For this category, rate candidate on a scale of 1 (lowest) to 5 (highest) --></help>
+        <label><!-- Core Competencies --></label>
+        <name>Core_Competencies__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Experience Comments --></label>
+        <name>Experience_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Experience --></label>
+        <name>Experience__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Interviewer --></label>
+        <name>Interviewer__c</name>
+        <relationshipLabel><!-- Reviews --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Job Application --></label>
+        <name>Job_Application__c</name>
+        <relationshipLabel><!-- Reviews --></relationshipLabel>
+    </fields>
+    <fields>
+        <label><!-- Leadership Skills Comments --></label>
+        <name>Leadership_Skills_Comments__c</name>
+    </fields>
+    <fields>
+        <label><!-- Leadership Skills --></label>
+        <name>Leadership_Skills__c</name>
+        <picklistValues>
+            <masterLabel>1</masterLabel>
+            <translation><!-- 1 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>2</masterLabel>
+            <translation><!-- 2 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>3</masterLabel>
+            <translation><!-- 3 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>4</masterLabel>
+            <translation><!-- 4 --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5</masterLabel>
+            <translation><!-- 5 --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Reason Recommended --></label>
+        <name>Reason_Recommended__c</name>
+    </fields>
+    <fields>
+        <help><!-- Do you recommend that we hire this candidate? --></help>
+        <label><!-- Recommend for Hire --></label>
+        <name>Recommend_for_Hire__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

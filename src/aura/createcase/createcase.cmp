@@ -1,0 +1,90 @@
+<aura:component controller="createcases" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="selectedLookUpRecord" type="sObject" default="{}"/>
+    <aura:attribute name="WrapperList" type="Object"/>  
+    <aura:attribute name="attachmentData" type="String"  /> 
+    <aura:attribute name="saved" type="Boolean" default="false" />
+    <aura:attribute name="fileError" type="String"  />
+    <aura:attribute name="accept" type="List" default="['.jpg', '.jpeg']"/>  
+    <aura:attribute name="fileName" type="String" default=''  />
+    <aura:attribute name="multiple" type="Boolean" default="false"/>
+    <aura:attribute name="disabled" type="Boolean" default="false"/>
+    <aura:attribute name="currentUserId" type="string" />
+    <aura:attribute name="recordId" type="String"/>
+    <aura:attribute name="CaseId" type="String"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <div class="slds-grid header "> 
+        <div class="Logo slds-size_1-of-3">
+            <img src="{!$Resource.Turnitin}"/>
+        </div>
+        <div class="headerRight slds-size_2-of-3">
+            <ul> 
+                <li onclick="{!c.navigatetohome}" >Home</li>
+                <li onclick="{!c.navigatetocases}"> Case</li> 
+                <li class="home"><span></span> Dashboard</li> 
+                <button class="slds-button slds-button_brand status" size="small">System Status</button>
+                <li><lightning:icon iconName="standard:user" alternativeText="user" /></li>
+                <li> Log out</li>
+            </ul>
+            
+        </div>
+    </div>
+    <div class="search"> 
+        <div class="slds-grid  slds-size_1-of-1 searchbar"> 
+            <div class="slds-form-element">
+                <div class="slds-form-element__control icon">
+                    <input type="text" id="text-input-id-1" placeholder="Search Topics Questions Keywords" class="slds-input" />
+                    <lightning:icon iconName="utility:search" alternativeText="XML" class="searchicon"/> 
+                </div>
+            </div>
+        </div>
+    </div>   
+    
+    <div class="wrapper ">
+        <div class="slds-grid slds-wrap slds-p-top_large">
+            <p class="pageHeading">Contact Support</p>
+        </div>  
+        <div class="formSuggestedWrapper slds-grid slds-wrap slds-p-top_large">
+            <div class="form">
+                <div class="slds-col slds-size_1-of-1 ">
+                    
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning:select required="true" label="Status" aura:id="status"  value="{!v.WrapperList.status}" class="select">
+                            <option value="">-- Choose One --</option>
+                            <aura:iteration items="{!v.WrapperList.methodOptionsStatus}" var="val">
+                                <option value="{!val}">{!val}</option>
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning:select required="true" label="Case Origin" aura:id="caseorigin"  value="{!v.WrapperList.origin}" class="select"  >
+                            <option value="">-- Choose One --</option>
+                            <aura:iteration items="{!v.WrapperList.methodOptionsOrigin}" var="val">
+                                <option value="{!val}">{!val}</option>
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+                    <div class="slds-col slds-size_1-of-1">
+                        <lightning:select required="true" label="Priority" aura:id="casePriority"  value="{!v.WrapperList.Priority}" class="select"  >
+                            <option value="">-- Choose One --</option>
+                            <aura:iteration items="{!v.WrapperList.methodOptionsPriority}" var="val">
+                                <option value="{!val}">{!val}</option>
+                            </aura:iteration>
+                        </lightning:select> 
+                    </div>
+                    <div class="slds-grid slds-wrap slds-p-bottom_small subject">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-4 ">
+                            <lightning:input maxlength="255" messageWhenTooLong="You have exceeded the limit of 255 characters!" name="Subject" aura:id="subject" label="Subject" required="true" value="{!v.WrapperList.subject}" class="select1"/>
+                        </div>
+                    </div>
+                    <div class="slds-grid slds-wrap slds-p-top_medium  slds-p-bottom_large">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-4">
+                            <lightning:button variant="success" class="roundCorners"  label="Submit Case" title="Submit" onclick="{!c.SubmitCase}"/>
+                            <lightning:button label="Cancel" class="cancelBtn" title="cancel" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>   
+    </div>
+</aura:component>

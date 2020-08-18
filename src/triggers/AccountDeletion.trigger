@@ -1,0 +1,1 @@
+sfdx force:auth:jwt:grant --clientid 3MVG9G9pzCUSkzZt_PqOwKIGLw77N4bMbh80DQbEah_8uRYFy56jGh7ebz68UP1_.oAUEZnwEHXhFpULjquSX --jwtkeyfile server.key --username sagar.kakkar@grazitti.co.uk --instanceurl https://login.salesforce.com --setdefaultdevhubusername

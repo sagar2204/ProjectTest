@@ -1,0 +1,27 @@
+.THIS {
+    
+}
+.THIS.TopContainer
+{
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+    /*margin-top: 5% !important;*/
+    padding: 26px 19px;
+    background-color:white;
+}
+
+.THIS .contentPadding{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.THIS .slds-col--padded {
+    padding-right: 0rem !important;
+    padding-left: 0rem !important;
+}
+
+.THIS .comm-layout-column{
+    padding-top: 0rem !important;
+    padding-bottom: 0rem !important;
+}
+.THIS .slds-spinner_container{position:fixed !important;}

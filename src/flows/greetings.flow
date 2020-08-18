@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>lversion</description>
+    <formulas>
+        <name>c_login</name>
+        <dataType>String</dataType>
+        <expression>{!$User.FirstName}</expression>
+    </formulas>
+    <formulas>
+        <name>lastname</name>
+        <dataType>String</dataType>
+        <expression>{!$User.LastName}</expression>
+    </formulas>
+    <interviewLabel>greetings {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>greetings</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>message</name>
+        <label>message</label>
+        <locationX>286</locationX>
+        <locationY>59</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>display</name>
+            <fieldText>&lt;p&gt;Hello &lt;b style=&quot;color: rgb(62, 62, 60); background-color: rgb(255, 255, 255);&quot;&gt;{!c_login} {!lastname}&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;Have&lt;/span&gt;&lt;b style=&quot;font-size: 20px;&quot;&gt; &lt;/b&gt;&lt;span style=&quot;font-size: 20px;&quot;&gt;a nice day﻿&lt;/span&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <pausedText>&lt;p&gt;{!c_login}&lt;/p&gt;</pausedText>
+        <showFooter>false</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <startElementReference>message</startElementReference>
+    <status>Active</status>
+</Flow>

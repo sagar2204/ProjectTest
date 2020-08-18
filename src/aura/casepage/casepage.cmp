@@ -1,0 +1,97 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="Casecontroller">
+    <aura:attribute name="FilterBy" type="String[]" default="['All cases','My Open Support Cases', 'My Closed Support Cases','Institutional Open Cases','Institutional closed Cases']"/>
+    <aura:attribute name="Allcase" type="List" /> 
+    <aura:attribute name="allData" type="List"/>
+    <aura:attribute name="currentPageNumber" type="Integer" default="1"/>
+    <aura:attribute name="pageSize" type="Integer" default="5"/>
+    <aura:attribute name="totalPages" type="Integer" default="0"/>
+    <aura:attribute name="pageList" type="List"/>
+    <aura:attribute name="data" type="List"/> 
+    <aura:attribute name="recordId" type="String" access="public" />   
+    <aura:attribute name="caseIdData" type="String"/> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+   
+    <div class="slds-grid header "> 
+        <div class="Logo slds-size_1-of-3">
+            <img src="{!$Resource.Turnitin}"/> 
+        </div> 
+        <div class="headerRight slds-size_2-of-3">
+            <ul> 
+                <li onclick="{!c.navigate}"> Home</li> 
+                <li class="home"> <span></span> Case</li> 
+                <li onclick="{!c.navigatetoknowledge}"> Knowledge Article</li>
+                <li onclick="{!c.navigatetodashboard}"> Dashboard</li> 
+                <button class="slds-button slds-button_brand status" size="small">System Status</button>  
+                <li><lightning:icon iconName="standard:user" alternativeText="user" /></li>
+                <li> Log out</li>
+            </ul>
+            
+        </div>
+    </div>
+    <div class="search"> 
+        <div class="slds-grid  slds-size_1-of-1 searchbar"> 
+            <div class="slds-form-element">
+                <div class="slds-form-element__control icon">
+                    <input type="text" id="text-input-id-1" placeholder="Search Topics Questions Keywords" class="slds-input" />
+                    <lightning:icon iconName="utility:search" alternativeText="XML" class="searchicon"/> 
+                </div>
+            </div>
+        </div>
+    </div>  
+    
+    <div class="slds-grid casess">
+        <img src="{!$Resource.case}"/> 
+        <p class="caselogo">Cases</p>
+    </div>
+    <div class="slds-grid slds-size_12-of-12">
+        <div class="selectbox slds-size_1-of-3 pickvalue ">
+            <lightning:select aura:id="select" name="select1" onchange="{!c.statuschange}" label="">
+                <aura:iteration items="{!v.FilterBy}" var="filters">
+                    <option text="{!filters}"></option> 
+                </aura:iteration>
+            </lightning:select>
+        </div>
+    </div>
+    
+    <div class="slds-grid slds-size_11-of-12 datatable">  
+        <table class="slds-table slds-table--bordered slds-table--striped">
+            <thead>
+                <tr>
+                    <th scope="col"><span class="slds-truncate">Case Number</span></th>
+                    <th scope="col"><span class="slds-truncate">Status</span></th>
+                    <th scope="col"><span class="slds-truncate">Priority</span></th>
+                    <th scope="col"><span class="slds-truncate">Origin</span></th> 
+                </tr>
+            </thead>
+            <tbody> 
+                <aura:iteration items="{!v.data}" var="case">
+                    <tr> 
+                        <td><a onclick="{!c.casedetail}" data-recId="{!case.Id}">{!case.CaseNumber}</a></td>               
+                        <td>{!case.Status}</td>    
+                        <td>{!case.Priority}</td> 
+                        <td>{!case.Origin}</td>   
+                    </tr>  
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+    <div class="slds-size_1-of-1">
+        <div class="pagination">
+            <lightning:button label="First" iconName="utility:left" iconPosition="left" onclick="{!c.onFirst}" disabled="{! v.currentPageNumber == 1}" class="btnsize"/>
+            <!-- <lightning:button iconName="utility:chevronleft" iconPosition="left" onclick="{!c.onPrev}" disabled="{! v.currentPageNumber == 1}" class="btnsize"/>-->
+            <aura:iteration items="{!v.pageList}" var="item">
+                <span class="slds-p-horizontal_x-small">
+                    <a onclick="{!c.processMe}" name="{!item}" class="{! (v.currentPageNumber == item) ? 'selected' : 'NotSelected'}">{!item}</a>
+                </span>
+            </aura:iteration>
+            <!--<lightning:button iconName="utility:chevronright" iconPosition="right"  disabled="{! v.currentPageNumber == v.totalPages}" onclick="{!c.onNext}" class="btnsize"/>-->
+            <lightning:button label="Last" iconName="utility:right" iconPosition="right"  disabled="{! v.currentPageNumber == v.totalPages}" onclick="{!c.onLast}" class="btnsize"/>
+        </div>
+        <div class="slds-grid slds-wrap slds-p-bottom_large">
+            <div class="slds-col slds-size_1-of-1 slds-medium-size_4-of-4 pagination">
+                <p class="slds-page-header__title">
+                </p>
+            </div> 
+        </div> 
+    </div>
+</aura:component>

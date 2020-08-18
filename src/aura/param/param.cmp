@@ -1,0 +1,40 @@
+<!--MultiSelectPicklist.cmp-->
+<aura:component controller="finalapex"> 
+     
+    <!--Declare Event Handlers-->
+   		    <aura:attribute name="columnsname" type="String"/>
+            <aura:attribute name="objectname" type="String[]"/>
+            <aura:handler name="init" value="{!this}" action="{!c.objname}"/>
+            <aura:attribute name="GenreList" type="List" default="[]" description="Genre Picklist Values"/>
+    		<aura:attribute name="selectedGenreList" type="List" default="[]" description="Selected Genre Picklist Values"/>
+            <aura:attribute name="data" type="Object"/>    
+            <aura:attribute name="columns" type="List"/>     
+            <aura:attribute name="duellist" type="Boolean" default="false"/>
+         <lightning:select aura:id="select" name="select" label="Select a pie" onchange="{!c.onChange}">
+                        <option >Choose one..</option>
+                 <aura:iteration items="{!v.objectname}" var="item">
+                             <option text="{!item}"></option>
+             </aura:iteration>
+    </lightning:select>
+    
+    <aura:if isTrue="{!v.duellist}">
+    <div class="slds-m-around_xx-large">
+        <lightning:dualListbox aura:id="selectGenre"
+                               name="Genre"
+                               label="Select Genre"
+                               sourceLabel="Available Genre"
+                               selectedLabel="Selected Genre"
+                               options="{!v.GenreList }"
+                               value="{!v.selectedGenreList}"
+                               onchange="{!c.handleGenreChange}"/>
+        <lightning:button  variant="brand" label="submit" type="submit"  onclick="{!c.submit}" />
+    </div>
+</aura:if>    
+   <div style="height: 300px">
+        <lightning:datatable
+                keyField="id"
+                data="{!v.data}"
+                columns="{!v.columnsname}"
+                />
+    </div>
+</aura:component>

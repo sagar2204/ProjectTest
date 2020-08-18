@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Policy</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Policy</value>
+    </caseValues>
+    <fields>
+        <label><!-- Amount after discount --></label>
+        <name>Amount_after_discount__c</name>
+    </fields>
+    <fields>
+        <label><!-- Policy Tenure --></label>
+        <name>Policy_Tenure__c</name>
+        <picklistValues>
+            <masterLabel>3 Years</masterLabel>
+            <translation><!-- 3 Years --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>5 Years</masterLabel>
+            <translation><!-- 5 Years --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Policy Type --></label>
+        <name>Policy_Type__c</name>
+        <picklistValues>
+            <masterLabel>Car Insurance</masterLabel>
+            <translation><!-- Car Insurance --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Health Insurance</masterLabel>
+            <translation><!-- Health Insurance --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label><!-- Policy Amount --></label>
+        <name>policy__c</name>
+    </fields>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

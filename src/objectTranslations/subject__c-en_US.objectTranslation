@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>subject</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Subjects</value>
+    </caseValues>
+    <fields>
+        <label><!-- Daa --></label>
+        <name>Daa__c</name>
+    </fields>
+    <fields>
+        <label><!-- Network --></label>
+        <name>Network__c</name>
+    </fields>
+    <fields>
+        <label><!-- Network analysis --></label>
+        <name>Network_analysis__c</name>
+    </fields>
+    <fields>
+        <label><!-- Networking --></label>
+        <name>Networking__c</name>
+    </fields>
+    <fields>
+        <label><!-- Vec mec --></label>
+        <name>Vec_mec__c</name>
+    </fields>
+    <fields>
+        <label><!-- c --></label>
+        <name>c__c</name>
+    </fields>
+    <fields>
+        <label><!-- cloud --></label>
+        <name>cloud__c</name>
+    </fields>
+    <fields>
+        <label><!-- cplus --></label>
+        <name>cplus__c</name>
+    </fields>
+    <fields>
+        <label><!-- data structure --></label>
+        <name>data_structure__c</name>
+    </fields>
+    <fields>
+        <label><!-- digital --></label>
+        <name>digital__c</name>
+    </fields>
+    <fields>
+        <label><!-- electronics --></label>
+        <name>electronics__c</name>
+    </fields>
+    <layouts>
+        <layout>Computer science</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Electronics</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Computer science --></label>
+        <name>Computer_science</name>
+    </recordTypes>
+    <recordTypes>
+        <label><!-- Electronics --></label>
+        <name>Electronics</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

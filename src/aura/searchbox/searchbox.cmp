@@ -1,0 +1,219 @@
+<aura:component controller="Getcontacts" implements="flexipage:availableForRecordHome" access="global">
+    
+    <aura:attribute name="Allcontact" type="contact[]" />
+    <aura:attribute name="Name" type="string"/>
+    <aura:attribute name="Email" type="string"/>
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="editData" type="boolean" default="false"/>
+    <aura:attribute name="saveData" type="boolean" default="false"/>
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="contactmap" type="Map"/>
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+    <aura:attribute name="id" type="string"/>
+    
+    <aura:attribute name="ContactList" type="Contact[]"/>
+    <aura:attribute name="PageNumber" type="integer" default="1"/>
+    <aura:attribute name="TotalPages" type="integer" default="0"/>
+    <aura:attribute name="TotalRecords" type="integer" default="0"/>
+    <aura:attribute name="RecordStart" type="integer" default="0"/>
+    <aura:attribute name="RecordEnd" type="integer" default="0"/>
+    
+    
+    
+    <div class="demo-only demo-only--sizing slds-grid slds-wrap slds-align_absolute-center">
+        <div class="slds-size_3-of-6">
+            <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">
+                
+                <form class="slds-form--stacked">
+                    
+                    <lightning:input aura:id="searcher" name="text"  label=" Enter Your Name" required="true" value="{!v.Name}" />
+                    <lightning:input  aura:id="searcher" type="text"  label="Enter Your Email" required="true"  value="{!v.Email}"/>
+                    <lightning:button  aura:id="searcher" label="Search" class="slds-m-top--medium" variant="brand" onclick="{!c.search}"/>
+                    <lightning:button  label="AllContact" class="slds-m-top--medium" variant="brand" onclick="{!c.Allcon}"/>
+                    <lightning:button  label="Delete Contact" class="slds-m-top--medium" variant="brand" onclick="{!c.deleteSelected}"/>
+                     
+                    <aura:if isTrue="{!v.saveData}">
+                        
+                        <lightning:button label="Save Selected" 
+                                          class="slds-m-top--medium"
+                                          variant="brand"
+                                          onclick="{!c.saveSelected}"/>
+                        
+                    </aura:if>    
+                </form>
+            </div>
+        </div>
+    </div>
+    <aura:if isTrue="{!v.Spinner}">
+        <div aura:id="spinnerId" class="slds-spinner_container">
+            <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                <span class="slds-assistive-text">Loading</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+        </div>
+    </aura:if>
+    <div class="datatable">
+        <div class="demo-only demo-only--sizing slds-grid slds-wrap slds-align_absolute-center">
+            <div class="slds-size_3-of-6">
+                <div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">
+                    <div class="slds-m-horizontal_small">
+                        <div class="slds-align_absolute-center">         
+                <lightning:button label="Previous"
+                                  disabled="{!v.startPage == 0}"  
+                                  onclick="{!c.navigation}"
+                                  variant="brand"
+                                  iconName="utility:back"
+                                  name="previous"/>
+                
+                <span class="slds-badge slds-badge_lightest"
+                      style="margin-right: 10px;margin-left: 10px;">
+                    Page {!v.currentPage} out of {!v.totalPagesCount}
+                </span>
+                
+                <lightning:button label="Next"
+                                  disabled="{!(v.endPage + 1) >= v.totalRecordsCount}" 
+                                  onclick="{!c.navigation}"
+                                  variant="brand"
+                                  iconName="utility:forward"
+                                  iconPosition="right"
+                                  name="next"/>
+            </div>
+            
+
+                        <table class="slds-table slds-table--bordered slds-table--striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col"> 
+                                        Select
+                                    </th>
+                                    <th scope="col"><span class="slds-truncate"> Name:</span></th>
+                                    
+                                    <th scope="col"><span class="slds-truncate">Email:</span></th>
+                                    <th scope="col"><span class="slds-truncate">Type:</span></th>
+                                    <th scope="col"><span class="slds-truncate">Actions:</span></th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <aura:iteration items="{!v.Allcontact}" var="n">
+                                    <tr> 
+                                        <td> <div class="slds-form-element">
+                                            <div class="slds-form-element__control">
+                                                <label class="slds-checkbox">
+                                                    <ui:inputCheckbox disabled="{!v.totalRecordsCount == 0}"
+                                                                      aura:id="selectAllId"
+                                                                      change="{!c.selectAllCheckbox}"/>
+                                                    <span class="slds-checkbox_faux"></span>
+                                                    <span class="slds-form-element__label"></span>
+                                                </label>
+                                            </div>
+                                            </div>
+                                        </td>
+                                        <td><a  onclick="{! c.openModel}" data-id="{!n.Id}">{!n.LastName}</a></td>
+                                        <td>{!n.Email}</td>
+                                        <td>{!n.Contacttype__c}</td> 
+                                        <td>
+                                            <lightning:button label="Delete" class="slds-m-top--medium"
+                                                              name="{!n.Id}"
+                                                              variant="destructive"
+                                                              onclick="{!c.Delete}"/>  
+                                            
+                                            <lightning:button label="Edit" class="slds-m-top--medium"
+                                                              name="{!n.Id}"
+                                                              variant="destructive"
+                                                              onclick="{!c.Edit}"/></td>
+                                        
+                                        <aura:if isTrue="{!v.editData}">
+                                            <td><ui:inputCheckbox class="slds-m-top--medium" aura:id="checkbox"  change="{!c.onCheck}"/></td> 
+                                            
+                                            <lightning:input aura:id="searcher" 
+                                                             type="String"
+                                                             label="Name"
+                                                             name="Namef"
+                                                             required="true"
+                                                             value="{!n.LastName}"/>
+                                            <lightning:input aura:id="searcher" 
+                                                             type="String"
+                                                             label="Email"
+                                                             name="Namef"
+                                                             required="true" 
+                                                             value="{!n.Email}"/> 
+                                            
+                                            
+                                            <lightning:button label="Update" class="slds-m-top--medium"
+                                                              name="{!n.Id}"
+                                                              variant="Success"
+                                                              onclick="{!c.Save}"/>
+                                            <lightning:button label="Cancel" class="slds-m-top--medium"
+                                                              name="con"
+                                                              variant="Success"
+                                                              onclick="{!c.Cancel}"/>
+                                            
+                                        </aura:if> 
+                                        
+                                        
+                                        
+                                    </tr>
+                                </aura:iteration> 
+                            </tbody>
+                        </table>
+                        <div class="slds-clearfix">
+                            <div class="slds-page-header" role="banner">
+                                <div class="slds-float_right">            
+                                    <lightning:button disabled="{!v.PageNumber == 1}" variant="brand" aura:id="prevPage" label="Prev" onclick="{!c.handlePrev}" />            
+                                    <lightning:button disabled="{!v.PageNumber == v.TotalPages}" aura:id="nextPage" variant="brand" label="Next" onclick="{!c.handleNext}"/>
+                                </div>
+                                <p class="slds-page-header__title">{!v.RecordStart}-{!v.RecordEnd} of {!v.TotalRecords} | Page {!v.PageNumber} of {!v.TotalPages}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <aura:if isTrue="{!v.isModalOpen}">
+        
+        <!-- Modal/Popup Box starts here-->
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+                <!-- Modal/Popup Box Header Starts here-->
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close"
+                                          onclick="{! c.closeModel }"
+                                          alternativeText="close"
+                                          variant="bare-inverse"
+                                          class="slds-modal__close"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Modal/PopUp Box</h2>
+                </header>
+                <!--Modal/Popup Box Body Starts here-->
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <lightning:recordForm
+                                          recordId="{!v.id}"
+                                          objectApiName="Contact"
+                                          layoutType="Full"
+                                          columns="2"
+                                          mode="edit" />
+                </div>
+                <!--Modal/Popup Box Footer Starts here-->
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral"
+                                      label="Cancel"
+                                      title="Cancel"
+                                      onclick="{! c.closeModel }"/>
+                    <lightning:button variant="brand"
+                                      label="OK"
+                                      title="OK"
+                                      onclick="{!c.submitDetails}"/>
+                </footer>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </aura:if>
+    
+    
+    
+</aura:component>

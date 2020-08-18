@@ -1,0 +1,28 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId" access="global" >
+    <aura:attribute name="active" type="integer" default="{0}"/>
+    <aura:attribute name="newlist" type="List"/> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <div class="carousel-inner slds-m-around_xx-large">                           
+        <aura:iteration items="{!v.newlist}" var="s" indexVar="index">   
+            <aura:if isTrue="{!index == 0}">
+                <div class="main " style="{!'background-color:'+s.color}" >
+                    <p class="para">My color is {!s.color} and Slide number is {!s.name}</p>
+                    
+                </div>
+                <aura:set attribute="else" >
+                    <div class="main slds-hide"  style="{!'background-color:'+s.color}" >
+                        <p class="para">My color is {!s.color} and Slide number is {!s.name}</p>
+                        
+                    </div>
+                </aura:set>
+            </aura:if>
+            
+        </aura:iteration> 
+        <div class="slds-align_absolute-center" style="height:5rem">
+            
+            <lightning:icon iconName="utility:left" class="lefts" onclick="{!c.previous}"  style="background-color:red" size="medium"/> 
+            <lightning:icon iconName="utility:right" class="rights" onclick="{!c.Next}"  style="background-color:red; margin-left:20px" size="medium"/>
+        </div>
+    </div>
+    
+</aura:component>

@@ -1,0 +1,54 @@
+<aura:component controller="accopppcon" implements="force:hasRecordId">  
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>    
+    <aura:attribute name="accountoppWrapper" type="List"/>
+    <aura:attribute  name="selectedCheckBoxes" type="List"/>
+     <aura:handler name="accountrecord" event="c:accopcon" action="{!c.handlecomponentEvent}"/>  
+     <aura:attribute  name="mohit" type="List"/>
+    <!--<c:accountc/>-->
+    
+    
+    <div class="slds-p-around--large"> 
+           <aura:iteration items="{!v.mohit}"  var="itrr">
+                    <table class="slds-table slds-table--bordered slds-table--cell-buffer">
+                        <thead>    
+                            <tr class="slds-text-title--caps">
+                                <th scope="col">
+                                    <div class="slds-truncate" title="ContactName">Contact Name</div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <aura:iteration items="{!itrr.Contacts}" var="itrr">
+                                <tr>
+                                    <th scope="row">
+                                        <div class="slds-truncate" title="{!itrr}">{!itrr}</div>
+                                    </th>
+                                    
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                        <thead>
+                            <tr class="slds-text-title--caps">
+                                <th scope="col">
+                                    <div class="slds-truncate" title="OpportunityName">Opportunity Name</div>
+                                    
+                                </th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <aura:iteration items="{!itrr.Opportunities}" var="itrr">
+                                <tr>
+                                    <th scope="row">
+                                        <div class="slds-truncate" title="{!itrr}">{!itrr}</div>
+                                    </th>
+                                    
+                                </tr>
+                            </aura:iteration>
+                        </tbody>
+                                
+            </table>
+        </aura:iteration>
+            </div>
+        
+        </aura:component>

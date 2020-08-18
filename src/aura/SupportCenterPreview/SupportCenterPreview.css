@@ -1,0 +1,141 @@
+.THIS {
+    background-color:white;
+}
+.THIS .header{
+    display:flex;
+    
+}
+.THIS .Logo
+{
+    background-color: white;
+}
+.THIS.casess
+{
+    padding-left:57px
+}
+.THIS .headerRight {
+    
+    
+    background-color: white;
+    
+}
+.THIS .headerRight ul
+{
+    display: flex;
+    justify-content: flex-end;
+}
+.THIS .headerRight ul li{
+    padding:15px; 
+}
+.THIS .headerRight ul li:nth-last-child(2){
+    padding:9px; 
+}
+.THIS .headerRight ul li:nth-last-child(1){
+    padding:15px; 
+    padding-left:2px 
+}
+
+.THIS .status
+{
+    background-color:#F2F2F2;
+    border-radius:50px; 
+}
+.THIS .slds-input
+{
+    width: 830px;
+    height:50px; 
+    box-shadow: 2px 2px 5px 6px #ccc; 
+}
+.THIS .Welcome
+{
+    text-align: center;
+    font-size: 45px;
+    background-color:white;
+    
+}
+.THIS .searchbar
+{  display: flex;
+    padding-left: 20%;
+    padding-top: 2%;
+    background-color: white;
+    position: relative;
+    margin-bottom: 43px;
+}
+.THIS.search
+{
+    padding-top:45px;
+}
+.THIS .searchicon svg
+{
+    fill: white;
+    background-color: #e33b32;
+    position: absolute;
+    bottom: 0px;
+    padding: 10px;
+    /* padding-left: 15px; */
+    /* margin-left: 0px; */
+    height: 52px;
+    width: 53px;
+    box-shadow: 2px 2px 5px 6px #ccc;
+}
+.THIS.Request
+{
+    background-color:#EBEBEB;
+    display:flex;
+    justify-content: center;
+    margin-top: 4%;
+}   
+.THIS.Request h1
+{ 
+    
+    padding: 45px;
+    font-size: 30px;
+    font-weight: bold;
+}  
+.THIS .RaiseCase
+{ 
+    margin-top:52px; 
+}
+.THIS .status
+{
+    
+    border-radius: 50px; 
+    background-color:#F2F2F2;
+    color: black;
+    border-color: rgb(248, 249, 251);
+}
+.THIS .caselogo 
+{ 
+    
+    font-size: 40px;
+    font-weight: bolder;
+    padding-left: 15px
+}
+.THIS .pickvalue
+{
+    padding-left: 57px; 
+    margin-bottom: 30px;
+}
+.THIS.datatable 
+{
+    margin: 0 57px; 
+    border: 1px solid #ccc;
+}
+.THIS.home
+{
+    display:flex; 
+}
+.THIS .home span
+{
+    right: 34.5%;
+    border: 1px solid black;
+    position: absolute;
+    top: 40px;
+    width: 29px;
+    
+}
+.THIS .pagination
+{
+    margin-top: 15px;
+    text-align: center;
+}

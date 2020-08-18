@@ -1,0 +1,58 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="carousel">
+    <aura:attribute name="active" type="integer" default="{0}"/>
+    <aura:attribute name="newlist" type="List"/> 
+    <aura:attribute name="interval" type="Integer" default="1"/>
+    <aura:attribute name="isFocused" type="Boolean" default="true" /> 
+    <aura:attribute name="isAutoTimer" type="Boolean" default="true"/>
+    <aura:attribute name="delay" type="Integer" default="3" description="Delay for slider change in seconds."/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/> 
+    <div class="carousel-inner slds-m-around_xx-large " style="position:relative;">                           
+        <aura:iteration items="{!v.newlist}" var="s" indexVar="index">   
+            <aura:if isTrue="{!index == 0}">
+                <div class="main">
+                    <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-3" style="margin-left:11%;"><p>{!s.heading__c}</p></div>
+                        <div class="slds-col slds-size_1-of-3" style="margin-left:38%;"><p>{!s.subheading__c}</p></div>
+                        
+                    </div>
+                    
+                    <div class="slds-align_absolute-center">
+                       <aura:unescapedHtml value="{!s.Image__c}"/>
+                    </div>
+                    <div class="slds-col slds-size_1-of-3" style="margin-left:11%;">
+                        <p>Order:{!s.Order__c}</p>
+                    </div>
+                    
+                </div>
+                <aura:set attribute="else" >
+                    <div class="main slds-hide">
+                        
+                   <div class="slds-grid slds-gutters">
+                        <div class="slds-col slds-size_1-of-3" style="margin-left:11%;"><p>{!s.heading__c}</p></div>
+                        <div class="slds-col slds-size_1-of-3" style="margin-left:38%;"><p>{!s.subheading__c}</p></div>
+                        
+                    </div>
+
+                        
+                        <div class="slds-align_absolute-center">
+                            <ui:outputRichText value="{!s.Image__c}" />
+                            
+                        </div>
+                        <div class="slds-col slds-size_1-of-3" style="margin-left:11%;">
+                            <p>Order:{!s.Order__c}</p>
+                        </div>
+                    </div>
+                </aura:set>
+            </aura:if>
+            
+        </aura:iteration> 
+        <div class="" style="height:5rem; position:absolute; top:45%; left:11%;">
+            <lightning:icon iconName="utility:left" class="lefts" onclick="{!c.previous}"  size="medium"  /> 
+        </div>
+       
+         <div class="" style="height:5rem; position:absolute; top:45%; right:11%;">
+         <lightning:icon iconName="utility:right" class="rights" onclick="{!c.Next}"  style=" margin-left:20px; fill:white;" size="medium"/>
+              </div>
+    </div>
+    
+</aura:component>

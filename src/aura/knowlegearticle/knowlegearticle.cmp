@@ -1,0 +1,63 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:appHostable" controller="Casecontroller">
+    <aura:attribute name="data" type="List"/> 
+    <aura:attribute name="recordId" type="String" access="public" />  
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>  
+    <div class="slds-grid header "> 
+        <div class="Logo slds-size_1-of-3">
+            <img src="{!$Resource.Turnitin}"/>
+        </div>
+        <div class="headerRight slds-size_2-of-3">
+            <ul> 
+                <li onclick="{!c.navigatetohome}" >Home</li>  
+                <li onclick="{!c.navigatetocases}"> Case</li> 
+                <li >Knowledge Article</li>
+                <li class="home" onclick="{!c.navigatetodashboard}"><span></span> Dashboard</li> 
+                <button class="slds-button slds-button_brand status" size="small">System Status</button>
+                <li><lightning:icon iconName="standard:user" alternativeText="user" /></li>
+                <li> Log out</li>
+            </ul>
+            
+        </div>
+    </div>  
+    <div class="search"> 
+        <div class="slds-grid  slds-size_1-of-1 searchbar"> 
+            <div class="slds-form-element">
+                <div class="slds-form-element__control icon">
+                    <input type="text" id="text-input-id-1" placeholder="Search Topics Questions Keywords" class="slds-input" />
+                    <lightning:icon iconName="utility:search" alternativeText="XML" class="searchicon"/> 
+                </div>
+            </div>
+        </div>
+    </div>  
+    
+    
+    <!--- knowledge article-->
+    <div class="slds-size_12-of-12">
+        <div class=" slds-size_10-of-12 datatable">  
+            <aura:iteration items="{!v.data}" var="c">
+                <div class="slds-box knowledge">   
+                    <div class="slds-size_12-of-12 title ">  
+                        <h1>{!c.Title}</h1>
+                        <div class="Knowledgearticle">
+                            <h2>Knowledge Article</h2>
+                        </div>
+                    </div>
+                    <div class="slds-size_12-of-12 summary">
+                        <span>{!c.Summary}</span> 
+                    </div>
+                    <div class="slds-size_12-of-12 article"> 
+                        <div class="articlenumber">
+                            <h4>ArticleNumber:<span>{!c.ArticleNumber}</span></h4> 
+                            
+                        </div>
+                        <div class="articlenumber title ">
+                            <h4>Title:<span>{!c.Title}</span></h4> 
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+            </aura:iteration>
+        </div> 
+    </div>  
+</aura:component>

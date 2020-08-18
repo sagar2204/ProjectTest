@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Student</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Students</value>
+    </caseValues>
+    <fields>
+        <label><!-- Accounts --></label>
+        <name>Accounts__c</name>
+    </fields>
+    <fields>
+        <label><!-- Biology --></label>
+        <name>Biology__c</name>
+    </fields>
+    <fields>
+        <label><!-- Business Studies --></label>
+        <name>Business_Studies__c</name>
+    </fields>
+    <fields>
+        <label><!-- Chemistry --></label>
+        <name>Chemistry__c</name>
+    </fields>
+    <fields>
+        <label><!-- Eco --></label>
+        <name>Eco__c</name>
+    </fields>
+    <fields>
+        <label><!-- English --></label>
+        <name>English__c</name>
+    </fields>
+    <fields>
+        <label><!-- History --></label>
+        <name>History__c</name>
+    </fields>
+    <fields>
+        <label><!-- Maths --></label>
+        <name>Maths__c</name>
+    </fields>
+    <fields>
+        <label><!-- Physical Education --></label>
+        <name>Physical_Education__c</name>
+    </fields>
+    <fields>
+        <label><!-- Public Ad --></label>
+        <name>Public_Ad__c</name>
+    </fields>
+    <fields>
+        <label><!-- Punjabi --></label>
+        <name>Punjabi__c</name>
+    </fields>
+    <fields>
+        <label><!-- literature --></label>
+        <name>literature__c</name>
+    </fields>
+    <fields>
+        <label><!-- physics --></label>
+        <name>physics__c</name>
+    </fields>
+    <layouts>
+        <layout>Arts</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Commerce</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Medical</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <layouts>
+        <layout>Non Medical</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <recordTypes>
+        <label><!-- Arts --></label>
+        <name>Arts</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- Please select this for Commerce --></description>
+        <label><!-- Comerce --></label>
+        <name>Comerce</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- This is for medical students --></description>
+        <label><!-- Medical --></label>
+        <name>Medical</name>
+    </recordTypes>
+    <recordTypes>
+        <description><!-- this is for non medical --></description>
+        <label><!-- Non Medical --></label>
+        <name>Non_Medical</name>
+    </recordTypes>
+    <startsWith>Consonant</startsWith>
+</CustomObjectTranslation>

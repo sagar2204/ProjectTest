@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <layouts>
+        <layout>Account Layout</layout>
+        <sections>
+            <label><!-- Main --></label>
+            <section>Main</section>
+        </sections>
+    </layouts>
+    <quickActions>
+        <label><!-- Support Center Preview --></label>
+        <name>Support_Center_Preview</name>
+    </quickActions>
+    <workflowTasks>
+        <description><!-- Please check revenue for this Account --></description>
+        <name>Please_check_revenue_for_this_Account</name>
+        <subject><!-- Please check revenue for this Account --></subject>
+    </workflowTasks>
+</CustomObjectTranslation>

@@ -1,0 +1,71 @@
+<aura:component implements="forceCommunity:availableForAllPageTypes" access="global" controller="Casecontroller" >
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:attribute name="data" type="List"/> 
+    <div class="slds-grid header "> 
+        <div class="Logo slds-size_1-of-3">
+            <img src="{!$Resource.Turnitin}"/>
+        </div>
+        <div class="headerRight slds-size_2-of-3"> 
+            <ul> 
+                <li onclick="{!c.navigate}" >Home</li>
+                <li onclick="{!c.navigatetocases}"> Case</li> 
+                <li class="home"><span></span> Dashboard</li> 
+                <button class="slds-button slds-button_brand status" size="small">System Status</button>
+                <li><lightning:icon iconName="standard:user" alternativeText="user" /></li>
+                <li> Log out</li>
+            </ul>
+            
+        </div>
+    </div>
+    <div class="search"> 
+        <div class="slds-grid  slds-size_1-of-1 searchbar"> 
+            <div class="slds-form-element">
+                <div class="slds-form-element__control icon">
+                    <input type="text" id="text-input-id-1" placeholder="Search Topics Questions Keywords" class="slds-input" />
+                    <lightning:icon iconName="utility:search" alternativeText="XML" class="searchicon"/> 
+                </div>
+            </div>
+        </div>
+    </div>   
+    
+    <div class="slds-size_1-of-1">
+        <div class="slds-box slds-size_10-of-12  main"> 
+             <aura:iteration items="{!v.data}" var="case">
+            <div class="slds-grid slds-size_1-of-1 ">
+                <div class="slds-col left">
+                    <p>Case Details</p>
+                </div>
+                <div class="slds-col right">
+                    <p>Case Number:</p> 
+                    <span>{!case.CaseNumber}</span>
+                </div>
+            </div>
+           
+                <div class="slds-size_1-of-1 data ">
+                    <span>Case Number</span>
+                    <div class="col Name">
+                        {!case.CaseNumber} 
+                    </div>
+                </div>
+                <div class="slds-size_1-of-1 data ">
+                    <span>Status</span>
+                    <div class="col Name">
+                        {!case.Status} 
+                    </div>
+                </div>
+                <div class="slds-size_1-of-1 data ">
+                    <span>Subject</span>
+                    <div class="col Name">
+                        {!case.Subject} 
+                    </div>
+                </div>
+                <div class="slds-box">
+                    <span>Description</span>
+                    <div class="slds-size_1-of-1">
+                        <p>{!case.Description}</p>
+                    </div>
+                </div>
+            </aura:iteration>
+        </div>
+    </div>
+</aura:component>

@@ -1,0 +1,16 @@
+<aura:component implements="forceCommunity:themeLayout">
+    <aura:attribute name="header" type="Aura.Component[]"/>
+    <aura:attribute name="footer" type="Aura.Component[]"/>
+    <aura:attribute name="body" type="Aura.Component[]"/>
+        <div class="slds-grid slds-wrap slds-col slds-size_12-of-12 slds-medium-size_12-of-12">
+            <div class="slds-size_12-of-12 slds-medium-size_12-of-12">
+                {!v.header}
+            </div>
+            <div class="slds-size_12-of-12 slds-medium-size_12-of-12">
+                {!v.body}
+            </div>
+            <div class="slds-size_12-of-12 slds-medium-size_12-of-12">
+                {!v.footer}
+            </div>
+        </div>
+ </aura:component>

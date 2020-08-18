@@ -1,0 +1,43 @@
+<aura:component >
+	<div class="demo-only demo-only--sizing slds-grid slds-wrap">
+<div class="slds-size_1-of-6">
+<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">.slds-size_1-of-6</div>
+</div>
+<div class="slds-size_1-of-6">
+<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">.slds-size_1-of-6</div>
+</div>
+<div class="slds-size_1-of-6">
+<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">.slds-size_1-of-6</div>
+</div>
+<div class="slds-size_1-of-6">
+<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">.slds-size_1-of-6</div>
+</div>
+<div class="slds-size_1-of-6">
+<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">.slds-size_1-of-6</div>
+</div>
+<div class="slds-size_1-of-6">
+<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">.slds-size_1-of-6</div>
+</div>
+<div class="slds-size_2-of-6">
+<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small"> <lightning:input name="input1" label="First Name" />
+  <lightning:input name="input1" label="Last Name" />
+  <lightning:input type="email" name="email1" value="abc@domain.com" label="Enter Your Email" />
+        <lightning:button label="Submit" 
+                              class="slds-m-top--medium"
+                              variant="brand"
+                              onclick="{!c.clickCreate}"/></div>
+</div>
+<div class="slds-size_4-of-6">
+<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">.slds-size_4-of-6</div>
+</div>
+<div class="slds-size_3-of-6">
+<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">.slds-size_3-of-6</div>
+</div>
+<div class="slds-size_3-of-6">
+<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">.slds-size_3-of-6</div>
+</div>
+<div class="slds-size_6-of-6">
+<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small">.slds-size_6-of-6</div>
+</div>
+</div>
+</aura:component>

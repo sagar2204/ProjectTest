@@ -1,0 +1,140 @@
+<aura:component controller="SearchEdit">	
+    
+    <aura:attribute  name="resultList" type="Contact[]" /> 
+    <aura:attribute  name="ContactList" type="Contact[]" /> 
+    <aura:attribute  name="FirstName" type="string" />
+    <aura:attribute  name="LastName" type="string" />
+    <aura:attribute  name="Email" type="string" /> 
+    <aura:attribute name="editData" type="boolean" default="false"/>
+    <aura:attribute name="saveData" type="boolean" default="false"/>
+    <lightning:layout>
+        <lightning:layoutItem padding="around-small" size="6">
+            
+            <div aria-labelledby="searcher">
+                <!-- BOXED AREA -->
+                <fieldset class="slds-box slds-theme--default slds-container--small">
+                    <legend id="newcampform" class="slds-text-heading--small 
+                                                    slds-p-vertical--medium">
+                        Search
+                    </legend>
+                    <form class="slds-form--stacked">          
+                        <lightning:input aura:id="searcher" 
+                                         type="String"
+                                         label="FirstName"
+                                         name="Namef"
+                                         
+                                         value="{!v.FirstName}"/> 
+                        <lightning:input type="String" aura:id="searcher" label="LastName"
+                                         name="Namel"
+                                         
+                                         value="{!v.LastName}"/>
+                        <lightning:input type="string" aura:id="searcher" label="Email"
+                                         name="Email"
+                                         
+                                         value="{!v.Email}" />
+                        <lightning:button label="Search" 
+                                          class="slds-m-top--medium"
+                                          variant="brand"
+                                          onclick="{!c.Search}"/>
+                        <lightning:button label="All Contact" 
+                                          class="slds-m-top--medium"
+                                          variant="brand"
+                                          onclick="{!c.All}"/>
+                        <aura:if isTrue="{!v.saveData}">
+                            
+                            <lightning:button label="Save Selected" 
+                                              class="slds-m-top--medium"
+                                              variant="brand"
+                                              onclick="{!c.saveSelected}"/>
+                            
+                        </aura:if>    
+                        
+                        
+                        
+                    </form>
+                </fieldset>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <div class="slds"> 
+        <div class="slds-align_absolute-center">            
+            <lightning:button disabled="{!v.page == 1}" variant="brand" label="Previous Page" onclick="{! c.navigate }" />            
+            <lightning:button disabled="{!v.page == v.pages}" aura:id="previousPage" variant="brand" label="Next Page" onclick="{! c.navigate }" />
+        </div>
+        <p class="slds-page-header__title slds-truncate">{!v.total} Contacts • page {!v.page} / {!v.pages}</p>
+        <ui:inputSelect aura:id="recordSize" label="Display Record Per Page: " change="{!c.onSelectChange}">
+            <ui:inputSelectOption text="10" label="10" value="true"/>
+            <ui:inputSelectOption text="15" label="15"/>
+            <ui:inputSelectOption text="20" label="20"/>
+        </ui:inputSelect>
+        <br/>
+        <br/>  
+        <table class="slds-table slds-table--bordered slds-table--striped">
+            <thead>
+                <tr>
+                    <th scope="col"><span class="slds-truncate">ID</span></th>
+                    <th scope="col"><span class="slds-truncate">FirstName</span></th>
+                    <th scope="col"><span class="slds-truncate">LastName</span></th>
+                    <th scope="col"><span class="slds-truncate">Email</span></th>
+                    <th scope="col"><span class="slds-truncate">Action</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.resultList}" var="contact">
+                    <tr>
+                        
+                        <td>{!contact.Id}</td>
+                        <td>{!contact.FirstName}</td>
+                        <td>{!contact.LastName}</td>
+                        <td>{!contact.Email}</td>
+                        <td><lightning:button label="Delete" class="slds-m-top--medium"
+                                              name="{!contact.Id}"
+                                              variant="destructive"
+                                              onclick="{!c.Delete}"/>                 
+                            <lightning:button label="Edit" class="slds-m-top--medium"
+                                              name="{!contact.Id}"
+                                              variant="destructive"
+                                              onclick="{!c.Edit}"/></td>
+                        
+                        
+                        <aura:if isTrue="{!v.editData}">
+                            <td><ui:inputCheckbox class="slds-m-top--medium" aura:id="checkbox"  change="{!c.onCheck}"/></td> 
+                            
+                            <lightning:input aura:id="searcher" 
+                                             type="String"
+                                             label="FirstName"
+                                             name="Namef"
+                                             
+                                             value="{!contact.FirstName}"/> 
+                            
+                            <lightning:input aura:id="searcher" 
+                                             type="String"
+                                             label="LastName"
+                                             name="Namef"
+                                             
+                                             value="{!contact.LastName}"/>
+                            <lightning:input aura:id="searcher" 
+                                             type="String"
+                                             label="Email"
+                                             name="Namef"
+                                             
+                                             value="{!contact.Email}"/> 
+                            
+                            <lightning:button label="Save" class="slds-m-top--medium"
+                                              name="{!contact.Id}"
+                                              variant="Success"
+                                              onclick="{!c.Save}"/>
+                            <lightning:button label="Cancel" class="slds-m-top--medium"
+                                              name="con"
+                                              variant="Success"
+                                              onclick="{!c.Cancel}"/>
+                            
+                        </aura:if> 
+                        
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+    </div>
+    
+</aura:component>
