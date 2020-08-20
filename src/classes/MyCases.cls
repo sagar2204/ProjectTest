@@ -1,4 +1,4 @@
-public with sharing class MyCases {
+cpublic with sharing class MyCases {
 
 @AuraEnabled
 public static List<Case> getCases(){
@@ -9,6 +9,7 @@ public static List<Case> getCases(){
 
     System.debug('clist++++++++++'+cList.size());
     return cList;
+  //new line added
 }
 
 @AuraEnabled
