@@ -9,7 +9,7 @@ public static List<Case> getCases(){
 
     System.debug('clist++++++++++'+cList.size());
     return cList;
-  //new line added
+  //new line added  in trigger
 }
 
 @AuraEnabled
